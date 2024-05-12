@@ -175,7 +175,8 @@ void Whynter::transmit_(uint32_t value) {
   }
   data->mark(this->bit_high_);
   transmit.set_send_times(4);
-  transmit.set_send_wait(50);
+  transmit.set_send_wait(200);
+  ESP_LOGD(TAG, "Sending 4 times w 200ms");
   transmit.perform();
 }
 
