@@ -174,10 +174,14 @@ void Whynter::transmit_(uint32_t value) {
     }
   }
   data->mark(this->bit_high_);
-  transmit.set_send_times(4);
-  transmit.set_send_wait(0);
-  ESP_LOGD(TAG, "Sending 4 times");
-  transmit.perform();
+  for (uint8_t i=0; i<4; ++i)
+  {
+    if (i > 0)
+    {
+      delay(100);
+    }
+    transmit.perform();
+  }
 }
 
 }  // namespace whynter
